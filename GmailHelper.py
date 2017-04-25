@@ -1,5 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class GmailHelper:
     """Utility class for logging into Gmail"""
@@ -16,8 +19,7 @@ class GmailHelper:
         email_id.send_keys(Keys.RETURN)
         next_button = driver.find_element_by_id("next")
         next_button.submit()
-        driver.implicitly_wait(30)
-        user_password = driver.find_element_by_id("Passwd")
+        user_password = WebDriverWait(driver, 30).until(EC.visibility_of_element_located((By.ID, "Passwd")))
         user_password.send_keys(password)
         sign_in = driver.find_element_by_id("signIn")
         sign_in.submit()
