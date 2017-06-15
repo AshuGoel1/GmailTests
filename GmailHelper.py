@@ -13,7 +13,6 @@ class GmailHelper:
         driver = self.driver
         driver.get(
             "https://accounts.google.com/ServiceLogin?service=mail&passive=true&rm=false&continue=https://mail.google.com/mail/&ss=1&scc=1&ltmpl=default&ltmplcache=2&emr=1&osid=1#identifier")
-        assert "Gmail" in driver.title
         email_id = driver.find_element_by_name("Email")
         email_id.send_keys("ashugoeltesting")
         email_id.send_keys(Keys.RETURN)
